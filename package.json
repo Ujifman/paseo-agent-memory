@@ -2,8 +2,17 @@
   "name": "paseo-agent-memory",
   "private": true,
   "version": "0.1.0",
+  "description": "Paseo plugin: persistent memory shared by all agents and isolated per project",
+  "license": "MIT",
+  "keywords": [
+    "paseo",
+    "paseo-plugin",
+    "agent-memory",
+    "mcp"
+  ],
   "files": [
     "paseo-plugin.json",
+    "OVERVIEW.md",
     "index.server.ts",
     "server/",
     "mcp/",
