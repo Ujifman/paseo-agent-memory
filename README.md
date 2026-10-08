@@ -89,13 +89,13 @@ host.
 From GitHub:
 
 ```bash
-paseo plugin install git:<owner>/paseo-agent-memory
+paseo plugin install git:Ujifman/paseo-agent-memory
 ```
 
 From a local checkout:
 
 ```bash
-git clone https://github.com/<owner>/paseo-agent-memory.git
+git clone https://github.com/Ujifman/paseo-agent-memory.git
 paseo plugin install /absolute/path/to/paseo-agent-memory
 ```
 
