@@ -271,7 +271,9 @@ the current options.
 
 Codex has a **memories** feature: it summarizes past threads in the background and
 injects what it learned into later sessions. It is off by default, so there is nothing to
-do unless you turned it on. Check `~/.codex/config.toml` (or `$CODEX_HOME/config.toml`):
+do unless you turned it on, either with the **Enable Codex memories** toggle under
+Settings → Personalization in the ChatGPT desktop app or in `~/.codex/config.toml`
+(or `$CODEX_HOME/config.toml`):
 
 ```toml
 [features]
@@ -280,7 +282,8 @@ memories = true
 
 Disable it in one of these ways:
 
-- **Completely.** Set the feature flag to `false`, or remove the line:
+- **Completely.** Switch the **Enable Codex memories** toggle off, or set the feature
+  flag to `false` (removing the line has the same effect):
 
   ```toml
   [features]
@@ -295,19 +298,21 @@ Disable it in one of these ways:
   use_memories = false        # existing memories are not injected into prompts
   ```
 
+- **For one chat.** Run `/memories` in the Codex CLI or the desktop app to choose whether
+  the current chat may read existing memories or contribute to future ones.
+
 - **Only for agents started by Paseo.** Leave your own `config.toml` alone and pass the
   override through the Codex provider entry in the daemon's `config.json`, for example by
   adding `-c features.memories=false` to its `command`. See Paseo's
   [custom providers](https://paseo.sh/docs/custom-providers) documentation for the
   provider fields.
 
-Memories Codex has already generated stay in its home directory (`~/.codex/memories` by
-default). To keep them, ask an agent to read that folder and save what still matters with
-`memory_save`.
+Memories Codex has already generated stay in `~/.codex/memories/`. To keep them, ask an
+agent to read that folder and save what still matters with `memory_save`. To remove them,
+use **Delete Codex memories** under Settings → Personalization in the desktop app.
 
-Key names are taken from the
-[Codex configuration schema](https://github.com/openai/codex/blob/main/codex-rs/core/config.schema.json);
-check it if your Codex version behaves differently.
+See the [Codex memories documentation](https://developers.openai.com/codex/memories) for
+the current options.
 
 ### Cursor
 
