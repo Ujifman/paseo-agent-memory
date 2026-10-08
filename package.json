@@ -1,0 +1,23 @@
+{
+  "name": "paseo-agent-memory",
+  "private": true,
+  "version": "0.1.0",
+  "files": [
+    "paseo-plugin.json",
+    "index.server.ts",
+    "server/",
+    "mcp/",
+    "scripts/"
+  ],
+  "scripts": {
+    "embed": "node scripts/embed-mcp.mjs",
+    "typecheck": "npm run embed && tsc --noEmit",
+    "test": "npm run embed && node --test"
+  },
+  "devDependencies": {
+    "@getpaseo/plugin": "0.10.3",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.3",
+    "zod": "^4.4.3"
+  }
+}
