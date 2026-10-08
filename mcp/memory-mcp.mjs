@@ -21,6 +21,13 @@ const MAX_CONTENT = 8000;
 const FULL_RECALL_BUDGET = 20000;
 const INDEX_FILE = "MEMORY.md";
 
+// Repeated on every full recall because some providers never see the plugin's system prompt.
+const RECALL_FOOTER =
+  "Feedback memories above are standing instructions from the user: follow them. " +
+  "During this task, call memory_save as soon as the user corrects you or states a preference (type 'feedback'), " +
+  "or you learn a durable project fact the repository does not make obvious (type 'project'). " +
+  "Update an existing memory under its name instead of adding a duplicate; do not save task progress.";
+
 const SCOPE_TITLES = {
   project: "Project memory: " + PROJECT_NAME,
   global: "Global memory (applies to every project)",
@@ -147,6 +154,7 @@ function recall({ query }) {
     if (!full) {
       text.push("Memory is large, so only the index is shown. Use memory_read or memory_recall with a query for the full text.");
     }
+    text.push(RECALL_FOOTER);
     return text.join("\n\n");
   }
 
