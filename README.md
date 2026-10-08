@@ -267,6 +267,48 @@ To keep them, ask an agent to read that folder and save what still matters with
 See the [Claude Code memory documentation](https://code.claude.com/docs/en/memory) for
 the current options.
 
+### Codex
+
+Codex has a **memories** feature: it summarizes past threads in the background and
+injects what it learned into later sessions. It is off by default, so there is nothing to
+do unless you turned it on. Check `~/.codex/config.toml` (or `$CODEX_HOME/config.toml`):
+
+```toml
+[features]
+memories = true
+```
+
+Disable it in one of these ways:
+
+- **Completely.** Set the feature flag to `false`, or remove the line:
+
+  ```toml
+  [features]
+  memories = false
+  ```
+
+- **Partly.** Keep the feature but stop one half of it in the `[memories]` section:
+
+  ```toml
+  [memories]
+  generate_memories = false   # new threads are not turned into memories
+  use_memories = false        # existing memories are not injected into prompts
+  ```
+
+- **Only for agents started by Paseo.** Leave your own `config.toml` alone and pass the
+  override through the Codex provider entry in the daemon's `config.json`, for example by
+  adding `-c features.memories=false` to its `command`. See Paseo's
+  [custom providers](https://paseo.sh/docs/custom-providers) documentation for the
+  provider fields.
+
+Memories Codex has already generated stay in its home directory (`~/.codex/memories` by
+default). To keep them, ask an agent to read that folder and save what still matters with
+`memory_save`.
+
+Key names are taken from the
+[Codex configuration schema](https://github.com/openai/codex/blob/main/codex-rs/core/config.schema.json);
+check it if your Codex version behaves differently.
+
 ### Cursor
 
 The Cursor agent Paseo runs through ACP has no automatic memory, so there is nothing to
